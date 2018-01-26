@@ -68,15 +68,33 @@ def logout():
 @app.route("/add", methods=['POST'])
 def add_car():
     # look inside the request to figure out what the user typed
-    new_car_name = request.form['new-car']
+    car_name = request.form['car-name']
+    car_make = request.form['car-make']
+    car_model = request.form['car-model']
+    car_year = request.form['car-year']
 
     # if the user typed nothing at all, redirect and tell them the error
-    if (not new_car_name) or (new_car_name.strip() == ""):
-        error = "Please specify the vehicle name you want to add."
+    if (not car_name) or (car_name.strip() == ""):
+        error = "Please specify the name of the vehicle you want to add."
+        return redirect("/?error=" + error)
+
+    # if the user typed nothing at all, redirect and tell them the error
+    if (not car_make) or (car_make.strip() == ""):
+        error = "Please specify the make of the vehicle you want to add."
+        return redirect("/?error=" + error)
+
+    # if the user typed nothing at all, redirect and tell them the error
+    if (not car_model) or (car_model.strip() == ""):
+        error = "Please specify the model of the vehicle you want to add."
+        return redirect("/?error=" + error)
+
+    # if the user typed nothing at all, redirect and tell them the error
+    if (not car_year) or (car_year.strip() == ""):
+        error = "Please specify the year of the vehicle you want to add."
         return redirect("/?error=" + error)
 
     owner = User.query.filter_by(email=session['user']).first()
-    car = Car(new_car_name, owner)
+    car = Car(car_name, car_make, car_model, car_year, owner)
     db.session.add(car)
     db.session.commit()
     return render_template('add-confirmation.html', car=car)

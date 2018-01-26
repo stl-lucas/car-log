@@ -16,13 +16,24 @@
   </ul>
 {% endif %}
 
-<h2>Edit My Vehicles</h2>
+<h2>Add New Vehicles</h2>
 
 <form action="/add" method="post">
     <label>
-        I want to add
-        <input type="text" name="new-car"/>
-        to my vehicles.
+        Name:
+        <input type="text" name="car-name"/>
+    </label>
+	<label>
+        Make:
+        <input type="text" name="car-make"/>
+    </label>
+	<label>
+        Model:
+        <input type="text" name="car-model"/>
+    </label>
+		<label>
+        Year:
+        <input type="integer" name="car-year"/>
     </label>
     <input type="submit" value="Add It"/>
 </form>

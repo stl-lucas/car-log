@@ -16,16 +16,18 @@ class User(db.Model):
 class Car(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120))
+    make = db.Column(db.String(120))
     model = db.Column(db.String(120))
     year = db.Column(db.Integer)
     mileage = db.Column(db.Integer)
     sold = db.Column(db.Boolean)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, name, make, model, mileage, sold, owner):
+    def __init__(self, name, make, model, year, owner):
         self.name = name
         self.make = make
         self.model = model
+        self.year = year
         self.mileage = 0
         self.sold = False
         self.owner = owner
