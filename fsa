@@ -1,0 +1,29 @@
+[33mcommit bf082a8772598d2d49872b3bdda49418c293453a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Tim Lucas <tllucas1s@gmail.com>
+Date:   Fri Jan 26 16:53:01 2018 -0600
+
+    First run of program successful. Registration, login and adding vehicles to list is working.
+
+[33mcommit 6db6b5a17ce8f843372b142c18815624e6a78d81[m
+Author: Tim Lucas <tllucas1s@gmail.com>
+Date:   Fri Jan 26 16:26:52 2018 -0600
+
+    Added first version of user and car models, basic controllers for register, login and adding new vehicles, views to support these functions.
+
+[33mcommit c24b3fabc7ccbbd8be9f6dfb1ab02c8f54d16213[m
+Author: Tim Lucas <tllucas1s@gmail.com>
+Date:   Fri Jan 26 16:05:24 2018 -0600
+
+    Added templates folder and base.html documents.
+
+[33mcommit cbfad6a9e144e69727f40fa36ca66c4cd4edf391[m
+Author: Tim Lucas <tllucas1s@gmail.com>
+Date:   Fri Jan 26 16:03:57 2018 -0600
+
+    Added app and model files.
+
+[33mcommit 724d5405f43a0a08f9a959c0453e71f446be729f[m
+Author: Tim Lucas <tllucas1s@gmail.com>
+Date:   Fri Jan 26 15:59:37 2018 -0600
+
+    Initial Commit.
