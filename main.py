@@ -1,5 +1,5 @@
 from app import app, session, request, redirect, render_template, session, flash
-from models import db, User, Car  
+from models import db, User, Car, Record
 
 def get_current_carlist(owner):
     return Car.query.filter_by(owner=owner).all()
@@ -98,6 +98,28 @@ def add_car():
     db.session.add(car)
     db.session.commit()
     return render_template('add-confirmation.html', car=car)
+
+# Load maintenance form
+@app.route("/maintenance", methods=['GET'])
+def maintenance():
+    id = request.args['id']
+    vehicle = Car.query.filter_by(id=id).first()
+    tasklist = Record.query.filter_by(vehicle=vehicle).all()
+    return render_template('maintenance.html', vehicle=vehicle, tasklist=tasklist)
+
+# Load maintenance form
+@app.route("/add_maintenance", methods=['POST'])
+def add_maintenance():
+    task_name = request.form['task-name']
+    task_date = request.form['task-date']
+    task_note = request.form['task-note']
+    id = request.args['id']
+
+    vehicle = Car.query.filter_by(id=id).first()
+    record = Record(task_name, task_date, task_note, vehicle)
+    db.session.add(record)
+    db.session.commit()
+    return render_template('add-maintenance.html', task=record)
 
 # Home Controller
 @app.route("/")

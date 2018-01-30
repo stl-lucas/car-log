@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if vehicle %}
+  <h2>{{ vehicle.name }} - Maintenance Records</h2>
+  <h4>{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }} | {{ vehicle.mileage }} miles</h4>
+  <ul>
+	{% if tasklist|length > 0 %}
+		{% for task in tasklist: %}
+		  <li>
+			  {{ task.task }} | {{ task.date }} | {{ task.note }}
+		  </li>
+		{% endfor %}
+	{% else %}
+		<li>No maintenance records have been added.</li>
+	{% endif %}
+  </ul>
+{% endif %}
+
+<h2>Add New Maintenance Record</h2>
+
+<form action="/add_maintenance" method="post">
+    <label>
+        Task:
+        <input type="text" name="task-name"/>
+    </label>
+	<label>
+        Date:
+        <input type="text" name="task-date"/>
+    </label>
+	<label>
+        Notes:
+        <input type="textarea" name="task-note"/>
+    </label>
+    <input type="submit" value="Add It"/>
+</form>
+
+{% endblock %}

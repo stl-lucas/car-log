@@ -6,11 +6,7 @@
   <ul>
     {% for car in carlist: %}
       <li>
-        <form action="/crossoff" method="post">
-          {{ car.name }}
-          <input type="hidden" name="crossed-off-car" value="{{ car.id }}"/>
-          <input type="submit" value="I Sold it!"/>
-        </form>
+          {{ car.name }} | {{ car.year }} {{ car.make }} {{ car.model }} | <a href="/maintenance?id={{ car.id }}">Add Maintenance</a>
       </li>
     {% endfor %}
   </ul>

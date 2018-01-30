@@ -22,6 +22,7 @@ class Car(db.Model):
     mileage = db.Column(db.Integer)
     sold = db.Column(db.Boolean)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    records = db.relationship('Record', backref='vehicle')
 
     def __init__(self, name, make, model, year, owner):
         self.name = name
@@ -34,3 +35,19 @@ class Car(db.Model):
 
     def __repr__(self):
         return '<Car %r>' % self.name
+
+class Record(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    task = db.Column(db.String(120))
+    date = db.Column(db.String(120))
+    note = db.Column(db.String(256))
+    vehicle_id = db.Column(db.Integer, db.ForeignKey('car.id'))
+
+    def __init__(self, task, date, note, vehicle):
+        self.task = task
+        self.date = date
+        self.note = note
+        self.vehicle = vehicle
+
+    def __repr__(self):
+        return '<Record %r>' % self.task
